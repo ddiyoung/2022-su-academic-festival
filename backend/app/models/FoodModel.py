@@ -45,5 +45,12 @@ class Food(EntityMeta):
             'is_soup': self.is_soup.__str__()
         }
 
+    def menu_normalize(self):
+        return {
+            'name': self.name.__str__(),
+            'represent_name': self.represent_name.__str__(),
+            'big_class_name': self.big_class_name.__str__()
+        }
+
 
 

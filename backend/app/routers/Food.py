@@ -1,7 +1,8 @@
 from typing import List
 
 from fastapi import APIRouter, Depends, status
-from app.schemas.pydantic.Food import FoodSchema, FoodLabelHierarchySchema, FoodBigClassSchema, FoodIsSpicySchema, FoodIsSoupSchema
+from app.schemas.pydantic.Food import FoodSchema, FoodLabelHierarchySchema, FoodBigClassSchema, FoodIsSpicySchema, \
+    FoodIsSoupSchema
 from app.services.FoodService import FoodService
 from app.utils.error.error_response import ErrorResponseModel, ErrorResponse
 
@@ -115,6 +116,42 @@ async def getIsSoup(
                 big_label=big_label,
                 small_label=small_label,
                 is_spicy=is_spicy
+            )
+        ]
+        if not result:
+            return ErrorResponse.not_found_error
+
+        return result
+
+    except:
+        return ErrorResponse.internal_server_error
+
+
+@FoodRouter.post("/is_soup", response_model=List[FoodSchema], responses={
+    status.HTTP_500_INTERNAL_SERVER_ERROR: {
+        "model": ErrorResponseModel,
+    },
+    status.HTTP_404_NOT_FOUND: {
+        "model": ErrorResponseModel,
+    }
+})
+async def getMenu(
+        food_class: str,
+        big_label: int,
+        small_label: int,
+        is_spicy: bool,
+        is_soup: bool,
+        foodService: FoodService = Depends()
+):
+    try:
+        result = [
+            menu.menu_normalize()
+            for menu in foodService.getMenu(
+                food_class=food_class,
+                big_label=big_label,
+                small_label=small_label,
+                is_spicy=is_spicy,
+                is_soup=is_soup
             )
         ]
         if not result:

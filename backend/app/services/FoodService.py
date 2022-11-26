@@ -40,3 +40,17 @@ class FoodService:
             small_label=small_label,
             is_spicy=is_spicy
         )
+
+    def getMenu(self,
+                food_class: str,
+                big_label: int,
+                small_label: int,
+                is_spicy: bool,
+                is_soup: bool) -> List[Food]:
+        return self.foodRepository.getMenu(
+            food_class=food_class,
+            big_label=big_label,
+            small_label=small_label,
+            is_spicy=is_spicy,
+            is_soup=is_soup
+        )

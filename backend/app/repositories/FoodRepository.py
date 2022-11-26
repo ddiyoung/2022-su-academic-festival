@@ -39,8 +39,7 @@ class FoodRepository:
                   food_class: str,
                   big_label: int,
                   small_label: int,
-                  is_spicy: bool) ->List[Food]:
-
+                  is_spicy: bool) -> List[Food]:
         query = self.db.query(Food)
 
         query = query.filter_by(food_class=food_class,
@@ -49,3 +48,19 @@ class FoodRepository:
                                 is_spicy=is_spicy)
 
         return query.group_by(Food.is_soup)
+
+    def getMenu(self,
+                food_class: str,
+                big_label: int,
+                small_label: int,
+                is_spicy: bool,
+                is_soup: bool) -> List[Food]:
+        query = self.db.query(Food)
+
+        query = query.filter_by(food_class=food_class,
+                                big_class_label=big_label,
+                                label_hierarchy=small_label,
+                                is_spicy=is_spicy,
+                                is_soup=is_soup)
+
+        return query
