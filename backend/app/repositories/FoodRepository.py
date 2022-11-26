@@ -5,7 +5,7 @@ from app.configs.Database import (
     get_db_connection
 )
 
-from app.models.FoodModel import FoodSmallLabel
+from app.models.FoodModel import Food
 
 
 class FoodRepository:
@@ -14,9 +14,16 @@ class FoodRepository:
     def __init__(self, db: Session = Depends(get_db_connection)) -> None:
         self.db = db
 
-    def getSmallLabel(self, big_label: int) -> List[FoodSmallLabel]:
-        query = self.db.query(FoodSmallLabel)
+    def getSmallLabel(self, food_class: str, big_label: int) -> List[Food]:
+        query = self.db.query(Food)
 
-        query = query.filter_by(big_class_label=big_label)
+        query = query.filter_by(big_class_label=big_label, food_class=food_class)
 
-        return query.group_by(FoodSmallLabel.label_hierarchy)
+        return query.group_by(Food.label_hierarchy)
+
+    def getBigLabel(self, food_class: str) -> List[Food]:
+        query = self.db.query(Food)
+
+        query = query.filter_by(food_class=food_class)
+
+        return query.group_by(Food.big_class_label)
