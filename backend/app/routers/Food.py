@@ -6,11 +6,11 @@ from app.services.FoodService import FoodService
 from app.utils.error.error_response import ErrorResponseModel, ErrorResponse
 
 FoodRouter = APIRouter(
-    prefix="/food", tags=['user']
+    prefix="/food", tags=['food']
 )
 
 
-@FoodRouter.get("/{big_label}", response_model=List[FoodLabelHierarchySchema], responses={
+@FoodRouter.get("/big_label/{big_label}", response_model=List[FoodLabelHierarchySchema], responses={
     status.HTTP_500_INTERNAL_SERVER_ERROR: {
         "model": ErrorResponseModel,
     },

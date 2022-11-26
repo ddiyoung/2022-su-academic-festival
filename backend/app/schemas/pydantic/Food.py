@@ -5,25 +5,22 @@ class FoodLabelHierarchySchema(BaseModel):
     label_hierarchy: int
 
 
-class FoodBigClassSchema(FoodLabelHierarchySchema):
-    id: int
+class FoodBigClassSchema(BaseModel):
     big_class_label: int
 
 
-class FoodFoodClassSchema(FoodBigClassSchema):
+class FoodFoodClassSchema(BaseModel):
     food_class: str
 
 
-class FoodIsSoupSchema(FoodFoodClassSchema):
+class FoodIsSoupSchema(BaseModel):
     is_soup: bool
 
 
-class FoodIsSpicySchema(FoodIsSoupSchema):
+class FoodIsSpicySchema(BaseModel):
     is_spicy: bool
 
 
-class FoodSchema(FoodIsSpicySchema):
+class FoodSchema(BaseModel):
+    id: int
     name: str
-    represent_name: str
-    big_class_name: str
-    middle_class_name: str
