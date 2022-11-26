@@ -40,5 +40,10 @@ class Food(EntityMeta):
             'is_spicy': self.is_spicy.__str__()
         }
 
+    def is_soup_normalize(self):
+        return {
+            'is_soup': self.is_soup.__str__()
+        }
+
 
 

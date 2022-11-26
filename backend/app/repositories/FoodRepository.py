@@ -34,3 +34,18 @@ class FoodRepository:
         query = query.filter_by(food_class=food_class, big_class_label=big_label, label_hierarchy=small_label)
 
         return query.group_by(Food.is_spicy)
+
+    def getIsSoup(self,
+                  food_class: str,
+                  big_label: int,
+                  small_label: int,
+                  is_spicy: bool) ->List[Food]:
+
+        query = self.db.query(Food)
+
+        query = query.filter_by(food_class=food_class,
+                                big_class_label=big_label,
+                                label_hierarchy=small_label,
+                                is_spicy=is_spicy)
+
+        return query.group_by(Food.is_soup)

@@ -28,3 +28,15 @@ class FoodService:
             big_label=big_label,
             small_label=small_label
         )
+
+    def getIsSoup(self,
+                  food_class: str,
+                  big_label: int,
+                  small_label: int,
+                  is_spicy: bool) -> List[Food]:
+        return self.foodRepository.getIsSoup(
+            food_class=food_class,
+            big_label=big_label,
+            small_label=small_label,
+            is_spicy=is_spicy
+        )
