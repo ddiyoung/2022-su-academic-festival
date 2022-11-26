@@ -11,13 +11,20 @@ class FoodService:
     def __init__(self, foodRepository: FoodRepository = Depends()) -> None:
         self.foodRepository = foodRepository
 
+    def getBigLabel(self, food_class: str) -> List[Food]:
+        return self.foodRepository.getBigLabel(
+            food_class
+        )
+
     def getSmallLabel(self, food_class: str, big_label: int) -> List[Food]:
         return self.foodRepository.getSmallLabel(
             food_class=food_class,
             big_label=big_label
         )
 
-    def getBigLabel(self, food_class: str) -> List[Food]:
-        return self.foodRepository.getBigLabel(
-            food_class
+    def getIsSpicy(self, food_class: str, big_label: int, small_label: int) -> List[Food]:
+        return self.foodRepository.getIsSpicy(
+            food_class=food_class,
+            big_label=big_label,
+            small_label=small_label
         )

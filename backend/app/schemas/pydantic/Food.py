@@ -22,5 +22,4 @@ class FoodIsSpicySchema(BaseModel):
 
 
 class FoodSchema(BaseModel):
-    id: int
     name: str
