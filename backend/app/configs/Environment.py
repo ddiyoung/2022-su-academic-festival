@@ -18,6 +18,8 @@ class EnvironmentSettings(BaseSettings):
     DATABASE_PORT: int = Field(..., env="DATABASE_PORT")
     DATABASE_USERNAME: str = Field(..., env="DATABASE_USERNAME")
     DEBUG_MODE: bool = Field(..., env="DEBUG_MODE")
+    REDIS_HOST: str = Field(..., env="REDIS_HOST")
+    REDIS_PORT: str = Field(..., env="REDIS_PORT")
 
     class Config:
         env_file = get_env_filename()
