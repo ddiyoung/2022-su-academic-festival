@@ -54,3 +54,9 @@ class FoodService:
             is_spicy=is_spicy,
             is_soup=is_soup
         )
+
+    def getKeyword(self,
+                   keyword: str) -> List[Food]:
+        return self.foodRepository.getKeyword(
+            keyword=keyword
+        )

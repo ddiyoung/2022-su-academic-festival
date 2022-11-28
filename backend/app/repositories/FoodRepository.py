@@ -4,7 +4,8 @@ from sqlalchemy.orm import Session
 from app.configs.Database import (
     get_db_connection
 )
-
+from app.configs.Redis import My_Redis
+from app.utils.keyword import keywordrank
 from app.models.FoodModel import Food
 
 
@@ -64,3 +65,26 @@ class FoodRepository:
                                 is_soup=is_soup)
 
         return query
+
+    def getKeyword(self,
+                   keyword: str):
+
+        list_keyword = keywordrank(keyword)
+
+        result = []
+
+        for key in list_keyword:
+            result.append(My_Redis.get(key))
+
+        result = set(result)
+
+        result.remove(None)
+
+        result = list(result)
+
+        query = self.db.query(Food)
+
+        query = query.filter(Food.label_hierarchy.in_(result))
+
+        return query
+

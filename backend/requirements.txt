@@ -18,3 +18,5 @@ typing-extensions==4.4.0
 uvicorn==0.20.0
 watchfiles==0.18.1
 websockets==10.4
+
+redis~=4.3.5
