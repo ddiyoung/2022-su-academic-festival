@@ -36,9 +36,11 @@
 }
 
 h1 {
-  font-size: 35px;
+  font-size: 30px;
 }
-
+h3 {
+  font-size: 15px;
+}
 p {
   font-size: 30px;
 }
@@ -53,6 +55,13 @@ p {
   width: 15%;
   margin: auto;
   display: block;
+}
+.horizontal-gradient {
+
+  background: linear-gradient(to left, #e84334d5, #F7B52C);
+  border: 0px;
+  color: white;
+
 }
 .answer-section {
   display: flex;
@@ -80,8 +89,9 @@ p {
 }
 button {
   position: relative;
-  width: 200px;
-  font-size: 16px;
+  width: 100px;
+  height: 5px;
+  font-size: 10px;
   font-weight: bold;
   color: #080808;
   background-color: #fdfaf9;
@@ -89,8 +99,9 @@ button {
   padding: 15px;
   align-items: center;
   cursor: pointer;
-  border: 2px solid #ef560a;
+  border: 3px solid #ef560a;
   text-align: center;
+  line-height: 5px;
 }
 GoBack{
   position: relative;
