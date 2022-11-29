@@ -3,6 +3,8 @@ import { SERVER, FOOD_CLASS_PATH, FOOD_CLASS_PARAMS } from "../constants";
 // first question
 export const api_food_class = async (data) => {
   var list;
+  var url = SERVER + FOOD_CLASS_PATH + FOOD_CLASS_PARAMS + data;
+  console.log(url);
   await fetch(SERVER + FOOD_CLASS_PATH + FOOD_CLASS_PARAMS + data, {
     method: "POST",
     headers: {

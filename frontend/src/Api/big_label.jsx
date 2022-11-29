@@ -1,8 +1,11 @@
 import { SERVER, BIG_LABEL_PATH, BIG_LABEL_PARAMS } from "../constants";
 
 // second question
-export async function api_big_label(Q1, data) {
+export const api_big_label = async (Q1, data) => {
   var list;
+  var url = SERVER + BIG_LABEL_PATH + Q1 + "&" + BIG_LABEL_PARAMS + data;
+  await console.log(url);
+
   await fetch(SERVER + BIG_LABEL_PATH + Q1 + "&" + BIG_LABEL_PARAMS + data, {
     method: "POST",
     headers: {
@@ -17,4 +20,4 @@ export async function api_big_label(Q1, data) {
       }
     });
   return list;
-}
+};
