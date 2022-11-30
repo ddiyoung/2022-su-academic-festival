@@ -1,7 +1,6 @@
 import React from "react";
 import "../App.css";
 import { questions } from "../questions";
-import Input from "./Input";
 import * as api from "../Api";
 import { useState, useEffect, useRoutes } from "react";
 import { BrowserView, MobileView } from "react-device-detect";
@@ -12,100 +11,162 @@ import {
   BIG_LABEL_PARAMS,
   SMALL_LABEL_PARAMS,
   IS_SPICY_PARAMS,
-  IS_SOUP_PARAMS,
 } from "../constants";
+import Loading from "../loading/Loading";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export default function Select() {
-  const [loading, setLoading] = useState(true);
-
+  const [loading, setLoading] = useState(false);
   const [start, setStart] = useState(false);
   const [goback, setGoback] = useState(false);
-
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [countIndex, setCountIndex] = useState(-1);
-  const [selections, setSelections] = useState([]);
   const [showResult, setShowResult] = useState(false);
-
   const [foodClass, setFoodClass] = useState("");
   const [bigLabel, setBigLabel] = useState(0);
   const [smallLabel, setSmallLabel] = useState(0);
   const [isSpicy, setIsSpicy] = useState(false);
   const [isSoup, setIsSoup] = useState(false);
-
   const [responseList, setResponseList] = useState([0, 1, 2, 3, 4, 5]);
-
   const [prevResponseList, setPrevResponseList] = useState();
 
   let list = [0, 1, 2, 3, 4, 5];
 
+  const skipQuestion = async () => {
+    console.log("길이는" + responseList.length);
+    console.log("값은" + responseList[0]);
+    console.log("질문번호는" + currentQuestion);
+    // 만약 다음 선택지가 하나라면 자동으로 선택되게 해주는 코드
+    if (responseList.length == 1) {
+      // food class 질문 받았을 때
+      if (currentQuestion == 1) {
+        list = await api.api_big_label(
+          FOOD_CLASS_PARAMS + foodClass,
+          responseList[0]
+        );
+        setBigLabel(responseList[0]);
+        setResponseList(list);
+      }
+
+      if (currentQuestion == 2) {
+        console.log("이거다" + responseList[0]);
+        list = await api.api_small_label(
+          FOOD_CLASS_PARAMS + foodClass,
+          BIG_LABEL_PARAMS + bigLabel,
+          responseList[0]
+        );
+        setSmallLabel(responseList[0]);
+        setResponseList(list);
+      }
+
+      // small label 질문 받았을 때
+      if (currentQuestion == 3) {
+        console.log("이거다1" + responseList[0]);
+        list = await api.api_is_spicy(
+          FOOD_CLASS_PARAMS + foodClass,
+          BIG_LABEL_PARAMS + bigLabel,
+          SMALL_LABEL_PARAMS + smallLabel,
+          responseList[0]
+        );
+        setIsSpicy(responseList[0]);
+        setResponseList(list);
+        console.log(list);
+      }
+
+      // small label 질문 받았을 때
+      if (currentQuestion == 4) {
+        console.log("이거다2" + responseList[0]);
+        list = await api.api_is_soup(
+          FOOD_CLASS_PARAMS + foodClass,
+          BIG_LABEL_PARAMS + bigLabel,
+          SMALL_LABEL_PARAMS + smallLabel,
+          IS_SPICY_PARAMS + isSpicy,
+          responseList[0]
+        );
+        setIsSoup(responseList[0]);
+        setResponseList(list);
+
+        console.log(responseList);
+        setShowResult(true);
+      }
+      // question 번호 갱신
+      const nextQuestion = currentQuestion + 1;
+      if (nextQuestion < questions.length) {
+        setCurrentQuestion(nextQuestion);
+      } else {
+        setShowResult(true);
+      }
+    }
+  };
+
+  useEffect(() => {
+    skipQuestion();
+  }, [responseList]);
+
   const startClick = async () => {
-    await setStart(true);
+    setStart(true);
     await delay(1000);
 
     // question 번호 갱신
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < questions.length) {
-      await setCurrentQuestion(nextQuestion);
+      setCurrentQuestion(nextQuestion);
     } else {
-      await setShowResult(true);
+      setShowResult(true);
     }
   };
 
   // 이전으로 되돌아가기
   const goBackClick = async (currentQuestion) => {
-    await setGoback(true);
+    setGoback(true);
+    setCountIndex(-1);
     await delay(1000);
 
-    await setResponseList(prevResponseList);
+    setResponseList(prevResponseList);
 
-    if (currentQuestion == 0) window.location.replace("/");
+    if (currentQuestion == 0) window.location.replace("/index");
 
     // question 번호 갱신
     const nextQuestion = currentQuestion - 1;
     if (nextQuestion < questions.length) {
-      await setCurrentQuestion(nextQuestion);
+      setCurrentQuestion(nextQuestion);
     } else {
-      await setShowResult(true);
+      setShowResult(true);
     }
   };
 
   const handleClick = async (id, answer, idx) => {
-    await setCountIndex(idx);
-
+    setLoading(true);
+    setCountIndex(idx);
     await delay(1000);
 
-    await console.log("current" + currentQuestion);
+    console.log("current" + currentQuestion);
 
     if (currentQuestion == 0) {
-      await setPrevResponseList(list);
+      setPrevResponseList(list);
       list = await api.api_food_class(answer);
 
-      await setResponseList(list);
-      await setFoodClass(answer);
-    }
-    else if (currentQuestion == 1) {
-      await setPrevResponseList(list);
+      setResponseList(list);
+      setFoodClass(answer);
+    } else if (currentQuestion == 1) {
+      setPrevResponseList(list);
 
       list = await api.api_big_label(FOOD_CLASS_PARAMS + foodClass, id);
-      await setResponseList(list);
-
-      await setBigLabel(id);
-    }
-    else if (currentQuestion == 2) {
-      await setPrevResponseList(list);
+      setResponseList(list);
+      setBigLabel(id);
+    } else if (currentQuestion == 2) {
+      setPrevResponseList(list);
 
       list = await api.api_small_label(
         FOOD_CLASS_PARAMS + foodClass,
         BIG_LABEL_PARAMS + bigLabel,
         id
       );
-      await setResponseList(list);
-
-      await setSmallLabel(id);
+      setResponseList(list);
+      setSmallLabel(id);
     } else if (currentQuestion == 3) {
-      await setPrevResponseList(list);
+      setPrevResponseList(list);
 
       list = await api.api_is_spicy(
         FOOD_CLASS_PARAMS + foodClass,
@@ -114,11 +175,10 @@ export default function Select() {
         id
       );
       console.log(idx);
-      await setResponseList(list);
-
-      await setIsSpicy(id);
+      setResponseList(list);
+      setIsSoup(id);
     } else if (currentQuestion == 4) {
-      await setPrevResponseList(list);
+      setPrevResponseList(list);
 
       list = await api.api_is_soup(
         FOOD_CLASS_PARAMS + foodClass,
@@ -127,74 +187,74 @@ export default function Select() {
         IS_SPICY_PARAMS + isSpicy,
         id
       );
-      await setResponseList(list);
-
-      await setIsSoup(id);
+      setResponseList(list);
+      setIsSoup(id);
     }
-    // 선택한 것 업데이트
-    await setSelections((selections) => [...selections, answer]);
+    setLoading(false);
 
     // question 번호 갱신
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < questions.length) {
-      await setCurrentQuestion(nextQuestion);
+      setCurrentQuestion(nextQuestion);
     } else {
-      await setShowResult(true);
+      setShowResult(true);
     }
   };
   return (
     <div className="app">
-      <BrowserView>
-        {showResult ? (
-          <>
-            <section className="showScore-section">
-              <Result list={responseList} />
-              {responseList.map((item, index) => (
-                <button key={index} className="select horizontal-gradient">
-                  {item}
+      {loading ? <Loading /> : ""}
+      {showResult ? (
+        <>
+          <Result list={responseList} />
+          <section className="answer-section">
+            {responseList.map((item, index) => (
+              <button key={index} className="start horizontal-gradient">
+                {item}
+              </button>
+            ))}
+          </section>
+          <br />
+          <button
+            className="footer goback"
+            onClick={() => window.location.replace("/index")}
+          >
+            다시찾기
+          </button>
+        </>
+      ) : (
+        <>
+          <img className="logo-small" alt="logo" src="images/logoOnly.png" />
+          <br />
+          <section className="question-section">
+            <h2>
+              Q{currentQuestion + 1}. {questions[currentQuestion].questionText}
+            </h2>
+          </section>
+          <br />
+          <section className="answer-section">
+            {questions[currentQuestion].answerOptions
+              .filter((item) => responseList.includes(item.id))
+              .map((item, index) => (
+                <button
+                  key={index}
+                  className={
+                    countIndex == index ? "select buttonclicked" : "select"
+                  }
+                  onClick={() => handleClick(item.id, item.answerText, index)}
+                >
+                  {item.answerText}
                 </button>
               ))}
-            </section>
-            <button
-              className={goback ? "footer goback" : "goback"}
-              onClick={() => window.location.replace("/")}
-            >
-              다시찾기
-            </button>
-          </>
-        ) : (
-          <>
-            <img className="logo" alt="logo" src="images/logoOnly.png" />
-            <br />
-            <section className="question-section">
-              <h1>
-                Q{currentQuestion + 1}.{questions[currentQuestion].questionText}
-              </h1>
-            </section>
-            <section className="answer-section">
-              {questions[currentQuestion].answerOptions
-                .filter((item) => responseList.includes(item.id))
-                .map((item, index) => (
-                  <button
-                    key={index}
-                    className={
-                      countIndex == index ? "select buttonclicked" : "select"
-                    }
-                    onClick={() => handleClick(item.id, item.answerText, index)}
-                  >
-                    {item.answerText}
-                  </button>
-                ))}
-              <button
-                className={goback ? "footer goback" : "goback"}
-                onClick={() => goBackClick(currentQuestion)}
-              >
-                뒤로가기
-              </button>
-            </section>
-          </>
-        )}
-      </BrowserView>
+          </section>
+          <br />
+          <button
+            className="footer goback"
+            onClick={() => goBackClick(currentQuestion)}
+          >
+            뒤로가기
+          </button>
+        </>
+      )}
     </div>
   );
 }
