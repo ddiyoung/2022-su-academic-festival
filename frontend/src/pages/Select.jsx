@@ -137,7 +137,7 @@ export default function Select() {
           <Result list={responseList} />
           <section className="answer-section">
             {responseList.map((item, index) => (
-              <button key={index} className="start horizontal-gradient">
+              <button key={index} className="result horizontal-gradient">
                 {item}
               </button>
             ))}
@@ -177,7 +177,7 @@ export default function Select() {
           </section>
           <br />
           <button
-            className="footer goback"
+            className="goback footer"
             onClick={() => goBackClick(currentQuestion)}
           >
             뒤로가기

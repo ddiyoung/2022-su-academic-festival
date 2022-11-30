@@ -10,7 +10,7 @@ export default function Result(props) {
       {props.list!=-1 ? (
         <h1>FOODICE가 사용자에 맞는 음식을 찾았습니다!</h1>
       ) : (
-        <h1>FOODICE가 사용자에 맞는 음식을 찾지 못했습니다!</h1>
+        <h1>FOODICE가 사용자에 맞는 음식을 찾지 못했습니다</h1>
       )}
       <br />
     </>
