@@ -11,14 +11,15 @@ export default function Input() {
   const [inputmsg, setInputmsg] = useState("");
   const [responseList, setResponseList] = useState([]);
 
-  let list = [];
+  let list = [""];
 
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
-    
-    list = await api_user_input(inputmsg);
+    console.log(inputmsg);
 
+    list = await api_user_input(inputmsg);
+    console.log(list);
     setResponseList(list);
     setClicked(true);
     setLoading(false);
@@ -34,7 +35,7 @@ export default function Input() {
       {!clicked ? (
         <>
           <img className="logo-full" alt="logo" src="images/logoOnly.png" />
-          <h2>원하는 음식의 스타일을 말해주세요!</h2>
+          <h1>원하는 음식의 스타일을 말해주세요!</h1>
           <br />
           <br />
           <form onSubmit={handleSubmit}>
@@ -52,16 +53,15 @@ export default function Input() {
                 전송
               </button>
             </div>
-
-            <div className="center">
-              <button
-                className="goback footer"
-                onClick={() => window.location.replace("/")}
-              >
-                뒤로가기
-              </button>
-            </div>
           </form>
+          <div className="center">
+            <button
+              className="goback footer"
+              onClick={() => window.location.replace("/")}
+            >
+              뒤로가기
+            </button>
+          </div>
         </>
       ) : (
         <>
@@ -70,14 +70,13 @@ export default function Input() {
           {responseList != -1 ? (
             <section className="answer-section">
               {responseList.map((item, index) => (
-                <div className="start horizontal-gradient" key={index}>
+                <div className="result horizontal-gradient" key={index}>
                   {item}
                 </div>
               ))}
             </section>
           ) : (
             <>
-              {" "}
               <button
                 className="footer goback"
                 onClick={() => window.location.replace("/input")}

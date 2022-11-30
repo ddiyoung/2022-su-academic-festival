@@ -155,9 +155,9 @@ export default function Select() {
           <img className="logo-small" alt="logo" src="images/logoOnly.png" />
           <br />
           <section className="question-section">
-            <h2>
+            <h1>
               Q{currentQuestion + 1}. {questions[currentQuestion].questionText}
-            </h2>
+            </h1>
           </section>
           <br />
           <section className="answer-section">
