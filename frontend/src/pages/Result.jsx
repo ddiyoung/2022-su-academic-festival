@@ -1,12 +1,18 @@
 import React from "react";
+import "../App.css";
 
-export default function Result() {
+export default function Result(props) {
+  console.log(props.list);
   return (
-    <div className="app">
-      <img className="logo" alt="logo" src="images/logoFull.png" />
+    <>
+      <img className="logo" alt="logo" src="images/logoOnly.png" />
       <br />
-      <h2>FOODICK가 사용자에 맞는 음식을 찾았습니다!</h2>
+      {props.list!=null? (
+        <h3>FOODICE가 사용자에 맞는 음식을 찾았습니다!</h3>
+      ) : (
+        <h3>FOODICE가 사용자에 맞는 음식을 찾지 못했습니다!</h3>
+      )}
       <br />
-    </div>
+    </>
   );
 }
