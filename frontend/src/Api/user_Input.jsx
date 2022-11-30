@@ -13,20 +13,22 @@ export const api_user_input = async (data) => {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => {
-        res.json();
-        if (res.status == 404) {
-          throw new Error("error");
-        }
-      })
+      .then((res) => res.json())
       .then((data) => {
-        list = new Array(data.length);
-        for (let i = 0; i < data.length; i++) {
-          list[i] = data[i].name;
+        if (data.length) {
+          list = new Array(data.length);
+          console.log(data.length);
+          for (let i = 0; i < data.length; i++) {
+            list[i] = data[i].name;
+            console.log(list[i]);
+          }
+        } else {
+          throw Error();
         }
       });
     return list;
   } catch (e) {
+    console.log(e);
     return -1;
   }
 };

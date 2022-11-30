@@ -6,13 +6,13 @@ export const api_small_label = async (Q1, Q2, data) => {
   try {
     await fetch(
       SERVER +
-        SMALL_LABEL_PATH +
-        Q1 +
-        "&" +
-        Q2 +
-        "&" +
-        SMALL_LABEL_PARAMS +
-        data,
+      SMALL_LABEL_PATH +
+      Q1 +
+      "&" +
+      Q2 +
+      "&" +
+      SMALL_LABEL_PARAMS +
+      data,
       {
         method: "POST",
         headers: {
@@ -22,15 +22,19 @@ export const api_small_label = async (Q1, Q2, data) => {
     )
       .then((res) => res.json())
       .then((data) => {
-        list = new Array(data.length);
-        for (let i = 0; i < data.length; i++) {
-          list[i] = data[i].is_spicy;
+        if (data.length) {
+          list = new Array(data.length);
+          for (let i = 0; i < data.length; i++) {
+            list[i] = data[i].is_spicy;
+          }
+        } else {
+          throw Error();
         }
       });
     console.log(list[0]);
     return list;
   } catch (e) {
-      window.location.replace("../select");
-    }
-  
+    alert("server error");
+    window.location.replace("../index");
+  }  
 };

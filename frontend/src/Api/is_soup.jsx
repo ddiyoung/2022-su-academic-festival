@@ -25,14 +25,18 @@ export const api_is_soup = async (Q1, Q2, Q3, Q4, data) => {
     )
       .then((res) => res.json())
       .then((data) => {
-        list = new Array(data.length);
-        for (let i = 0; i < data.length; i++) {
-          list[i] = data[i].name;
+        if (data.length) {
+          list = new Array(data.length);
+          for (let i = 0; i < data.length; i++) {
+            list[i] = data[i].name;
+          }
+        }else {
+          throw Error();
         }
       });
     return list;
   } catch (e) {
-    alert("ERROR!!");
+      alert("server error");
     window.location.replace("/index");
   }
 }

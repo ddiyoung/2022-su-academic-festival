@@ -15,14 +15,18 @@ export const api_big_label = async (Q1, data) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        list = new Array(data.length);
-        for (let i = 0; i < data.length; i++) {
-          list[i] = data[i].label_hierarchy;
+        if (data.length) {
+          list = new Array(data.length);
+          for (let i = 0; i < data.length; i++) {
+            list[i] = data[i].label_hierarchy;
+          }
+        } else {
+          throw Error();
         }
       });
     return list;
   } catch (e) {
-      alert("ERROR!!");
+      alert("server error");
       return window.location.replace("/index");    
   }
 };

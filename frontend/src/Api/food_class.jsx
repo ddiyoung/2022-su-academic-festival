@@ -15,14 +15,18 @@ export const api_food_class = async (data) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        list = new Array(data.length);
-        for (let i = 0; i < data.length; i++) {
-          list[i] = data[i].big_class_label;
+        if (data.length) {
+          list = new Array(data.length);
+          for (let i = 0; i < data.length; i++) {
+            list[i] = data[i].big_class_label;
+          }
+        } else {
+          throw Error();
         }
       });
     return list;
   } catch (e) {
-    alert("ERROR!!");
+    alert("server error");
     window.location.replace("/index");
   }
 };
