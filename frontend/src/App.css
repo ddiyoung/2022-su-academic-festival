@@ -1,3 +1,21 @@
+@font-face {
+  font-family: 'semibold';
+  font-weight: 100 900;
+  src: url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css') format('semibold');
+}
+
+@font-face {
+  font-family: 'Regular';
+  font-weight: 100 900;
+  src: url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css') format('Regular');
+}
+
+body{
+  margin-left: auto;
+  margin-right: auto;
+  margin: 200px 0px;
+}
+
 @keyframes verticalBreathing {
   0% {
     background-color: #fbf8f7;
@@ -23,11 +41,12 @@
     background-color: #ef560a;
     color: #fbf9f9;
     box-shadow: 3px 5px 5px 0px rgba(0, 0, 0, 0.75);
+    font-size: 20px;
   }
 }
 .app {
   text-align: center;
-  min-height: 400px;
+  min-height: 500px;
   height: min-content;
   border-radius: 15px;
   padding: 20px;
@@ -36,86 +55,149 @@
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 45px;
+  font-family: semibold;
 }
 h3 {
-  font-size: 15px;
+  font-size: 20px;
+  font-family: semibold;
 }
 p {
   font-size: 30px;
 }
-.logo{
-  height: 8%;
-  width: 8%;
+.logo-full{
+  height: 10%;
+  width: 10%;
   margin: auto;
   display: block;
 }
+.logo-small{
+  height: 5%;
+  width: 5%;
+  margin: auto;
+  display: block;
+}
+
 .mobile-logo{
   height: 15%;
   width: 15%;
   margin: auto;
   display: block;
 }
+.footer{
+  position: relative;
+  background-color: #aba8a8;
+  bottom: -50px;
+}
 .horizontal-gradient {
-
-  background: linear-gradient(to left, #e84334d5, #F7B52C);
-  border: 0px;
+  background: linear-gradient(to left, #F15A24, #F7931E);
   color: white;
-
+}
+.user-input{
+  outline: none;
+  vertical-align: middle;
+  color:#aba8a8;
+  width: 250px;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+  border-bottom-width: 1;
+  border-color:#e84334d5;
+  font-size: 20px;
 }
 .answer-section {
   display: flex;
   flex-wrap: wrap;
-  /*grid-template-columns: 1fr 1fr;*/
   grid-template-columns: 1fr 1fr 1fr;
   position: relative;
-  width:650px;
+  width:700px;
   /*margin: 20px auto;*/
   /*max-width: 500px;*/
   row-gap: 30px;
-  padding: 10;
+  padding: 10px;
   column-gap: 15px;
   margin: auto;
+  justify-content: center;
 }
-.mobile-answer-section {
+/* .mobile-answer-section {
   display: flex;
   flex-wrap:wrap;
   position: relative;
-  /*margin: 20px auto;*/
   max-width: 500px;
   row-gap: 30px;
   padding: 10px 10px;
   column-gap: 40px;
+} */
+.start{
+    position: relative;
+      width: 200px;
+      font-size: 15px;
+      font-weight: bold;
+      color: white;
+      background-color: #fdfaf9;
+      border-radius: 30px;
+      padding: 20px;
+      align-items: center;
+      cursor: pointer;
+      border: 0px !important;
+      text-align: center;
+      line-height: 1px;
+      font-family: Regular;
 }
-button {
+.result {
   position: relative;
-  width: 100px;
-  height: 5px;
-  font-size: 10px;
+  width: 150px;
+  font-size: 15px;
   font-weight: bold;
-  color: #080808;
+  color: white;
   background-color: #fdfaf9;
   border-radius: 30px;
-  padding: 15px;
+  padding: 20px;
+  align-items: center;
+  border: 0px !important;
+  text-align: center;
+  line-height: 1px;
+  font-family: Regular;
+}
+
+.center{
+  text-align:center;
+}
+
+.select{
+  position: relative;
+  min-width: 200px;
+  max-width: 250px;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+  background-color: #ffffff;
+  border-radius: 30px;
+  padding: 25px;
   align-items: center;
   cursor: pointer;
-  border: 3px solid #ef560a;
+  border: 4px solid #ef560a;
   text-align: center;
-  line-height: 5px;
+  line-height: 2px;
+  display: inline-block;
+  font-family: Regular;
 }
-GoBack{
+
+.goback{
   position: relative;
-    width: 100px;
-    font-size: 16px;
+    width: 140px;
+    height: 10px;
+    font-size: 14px;
     font-weight: bold;
-    color: #080808;
-    background-color: #fdfaf9;
-    border-radius: 10px;
-    padding: 12px;
+    color: white;
+    background-color: #9d9a9a;
+    border-radius: 30px;
+    padding: 18px;
     align-items: center;
     cursor: pointer;
-    border: 3px solid #ef560a;
+    border: 1px solid #8a8888;
     text-align: center;
+    line-height: 1px;
 }
 mobilebutton{
     position: relative;
@@ -158,15 +240,15 @@ mobilebutton{
     font-size: 26px;
   }
 
-  button {
-    width: 100%;
+  select {
+    width: 120%;
     min-width: 60px;
   }
   mobilebutton{
     width:100%;
     min-width: 60px;
   }
-  GoBack{
+  goback{
     width: 100%;
     min-width: 60px;
   }
