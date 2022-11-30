@@ -14,31 +14,36 @@ export const api_is_spicy = async (Q1, Q2, Q3, data) => {
     "&" +
     IS_SPICY_PARAMS +
     data;
-  await console.log(url);
-  await fetch(
-    SERVER +
-      IS_SPICY_PATH +
-      Q1 +
-      "&" +
-      Q2 +
-      "&" +
-      Q3 +
-      "&" +
-      IS_SPICY_PARAMS +
-      data,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  )
-    .then((res) => res.json())
-    .then((data) => {
-      list = new Array(data.length);
-      for (let i = 0; i < data.length; i++) {
-        list[i] = data[i].is_soup;
+  console.log(url);
+  try {
+    await fetch(
+      SERVER +
+        IS_SPICY_PATH +
+        Q1 +
+        "&" +
+        Q2 +
+        "&" +
+        Q3 +
+        "&" +
+        IS_SPICY_PARAMS +
+        data,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
       }
-    });
-  return list;
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        list = new Array(data.length);
+        for (let i = 0; i < data.length; i++) {
+          list[i] = data[i].is_soup;          
+        }
+      });
+    return list;
+  } catch (e) {
+    alert("ERROR!!");
+    window.location.replace("/index");
+  }
 };
