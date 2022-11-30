@@ -49,8 +49,7 @@ body{
   min-height: 500px;
   height: min-content;
   border-radius: 15px;
-  padding: 20px;
-  /*box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);*/  
+  padding: 20px; 
   background-color: white;
 }
 
@@ -78,16 +77,10 @@ p {
   display: block;
 }
 
-.mobile-logo{
-  height: 15%;
-  width: 15%;
-  margin: auto;
-  display: block;
-}
 .footer{
   position: relative;
   background-color: #aba8a8;
-  bottom: -50px;
+  bottom: -120px;
 }
 .horizontal-gradient {
   background: linear-gradient(to left, #F15A24, #F7931E);
@@ -97,7 +90,7 @@ p {
   outline: none;
   vertical-align: middle;
   color:#aba8a8;
-  width: 250px;
+  width: 300px;
   border-left-width: 0;
   border-right-width: 0;
   border-top-width: 0;
@@ -111,23 +104,12 @@ p {
   grid-template-columns: 1fr 1fr 1fr;
   position: relative;
   width:700px;
-  /*margin: 20px auto;*/
-  /*max-width: 500px;*/
   row-gap: 30px;
   padding: 10px;
   column-gap: 15px;
   margin: auto;
   justify-content: center;
 }
-/* .mobile-answer-section {
-  display: flex;
-  flex-wrap:wrap;
-  position: relative;
-  max-width: 500px;
-  row-gap: 30px;
-  padding: 10px 10px;
-  column-gap: 40px;
-} */
 .start{
     position: relative;
       width: 200px;
@@ -146,24 +128,28 @@ p {
 }
 .result {
   position: relative;
-  width: 150px;
-  font-size: 15px;
-  font-weight: bold;
+  min-width: 250px;
+  max-width: 350px;
+  font-size: 25px;
   color: white;
   background-color: #fdfaf9;
   border-radius: 30px;
-  padding: 20px;
+  padding: 30px;
   align-items: center;
   border: 0px !important;
   text-align: center;
   line-height: 1px;
   font-family: Regular;
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.55);
 }
 
 .center{
   text-align:center;
 }
-
+.refind{
+  color:#9d9a9a;
+  font-size: 20px;
+}
 .select{
   position: relative;
   min-width: 200px;
@@ -198,21 +184,9 @@ p {
     border: 1px solid #8a8888;
     text-align: center;
     line-height: 1px;
+    bottom: -100px;
 }
-mobilebutton{
-    position: relative;
-    width: 100px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #080808;
-    background-color: #fdfaf9;
-    border-radius: 30px;
-    padding: 12px;
-    align-items: center;
-    cursor: pointer;
-    border: 3px solid #ef560a;
-    text-align: center;
-}
+
 .buttonclicked {
   animation: verticalBreathing 1s ease;
 }
