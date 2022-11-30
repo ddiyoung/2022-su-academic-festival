@@ -20,21 +20,33 @@ class FoodRepository:
 
         query = query.filter_by(food_class=food_class)
 
-        return query.group_by(Food.big_class_label)
+        result = query.group_by(Food.big_class_label)
+
+        self.db.close()
+
+        return result
 
     def getSmallLabel(self, food_class: str, big_label: int) -> List[Food]:
         query = self.db.query(Food)
 
         query = query.filter_by(big_class_label=big_label, food_class=food_class)
 
-        return query.group_by(Food.label_hierarchy)
+        result = query.group_by(Food.label_hierarchy)
+
+        self.db.close()
+
+        return result
 
     def getIsSpicy(self, food_class: str, big_label: int, small_label: int) -> List[Food]:
         query = self.db.query(Food)
 
         query = query.filter_by(food_class=food_class, big_class_label=big_label, label_hierarchy=small_label)
 
-        return query.group_by(Food.is_spicy)
+        result = query.group_by(Food.is_spicy)
+
+        self.db.close()
+
+        return result
 
     def getIsSoup(self,
                   food_class: str,
@@ -48,7 +60,11 @@ class FoodRepository:
                                 label_hierarchy=small_label,
                                 is_spicy=is_spicy)
 
-        return query.group_by(Food.is_soup)
+        result = query.group_by(Food.is_soup)
+
+        self.db.close()
+
+        return result
 
     def getMenu(self,
                 food_class: str,
@@ -64,11 +80,12 @@ class FoodRepository:
                                 is_spicy=is_spicy,
                                 is_soup=is_soup)
 
+        self.db.close()
+
         return query
 
     def getKeyword(self,
                    keyword: str):
-
         list_keyword = keywordrank(keyword)
 
         result = []
@@ -86,5 +103,6 @@ class FoodRepository:
 
         query = query.filter(Food.label_hierarchy.in_(result))
 
-        return query
+        self.db.close()
 
+        return query
