@@ -47,6 +47,7 @@ export default function Input() {
               onChange={handleChange}
             />
             <br />
+            <br/>
             <br />
             <div className="center">
               <button className="select" type="submit">
@@ -66,17 +67,20 @@ export default function Input() {
       ) : (
         <>
           <Result list={responseList} />
-          <h3>{inputmsg}에 대한 결과입니다.</h3>
           {responseList != -1 ? (
-            <section className="answer-section">
-              {responseList.map((item, index) => (
-                <div className="result horizontal-gradient" key={index}>
-                  {item}
-                </div>
-              ))}
-            </section>
+            <>
+              <h3>{inputmsg}에 대한 결과입니다.</h3>
+              <section className="answer-section">
+                {responseList.map((item, index) => (
+                  <div className="result horizontal-gradient" key={index}>
+                    {item}
+                  </div>
+                ))}
+              </section>
+            </>
           ) : (
             <>
+              <div className="refind">FOODICE와 함께 다시 찾아볼까요?</div>
               <button
                 className="footer goback"
                 onClick={() => window.location.replace("/input")}
