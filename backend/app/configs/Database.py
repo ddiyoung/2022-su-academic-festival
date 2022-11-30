@@ -10,11 +10,11 @@ DATABASE_URL = f"{env.DATABASE_DIALECT}://{env.DATABASE_USERNAME}:{env.DATABASE_
 
 # Create Database Engine
 Engine = create_engine(
-    DATABASE_URL, echo=env.DEBUG_MODE, future=True
+    DATABASE_URL, echo=env.DEBUG_MODE, future=True, pool_size=10, max_overflow=20
 )
 
 SessionLocal = sessionmaker(
-    autocommit=False, autoflush=False, bind=Engine
+    autocommit=False, autoflush=True, bind=Engine
 )
 
 
