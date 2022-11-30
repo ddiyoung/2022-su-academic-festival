@@ -31,7 +31,11 @@ async def getBigClass(food_class: str, foodService: FoodService = Depends()):
 
         return result
 
-    except:
+
+    except Exception as e:
+
+        print(e)
+
         return ErrorResponse.internal_server_error
 
 
@@ -57,7 +61,11 @@ async def getSmallLabel(food_class: str, big_label: int, foodService: FoodServic
 
         return result
 
-    except:
+
+    except Exception as e:
+
+        print(e)
+
         return ErrorResponse.internal_server_error
 
 
@@ -89,7 +97,11 @@ async def getIsSpicy(
 
         return result
 
-    except:
+
+    except Exception as e:
+
+        print(e)
+
         return ErrorResponse.internal_server_error
 
 
@@ -123,7 +135,11 @@ async def getIsSoup(
 
         return result
 
-    except:
+
+    except Exception as e:
+
+        print(e)
+
         return ErrorResponse.internal_server_error
 
 
@@ -159,7 +175,12 @@ async def getMenu(
 
         return result
 
-    except:
+
+
+    except Exception as e:
+
+        print(e)
+
         return ErrorResponse.internal_server_error
 
 
@@ -175,17 +196,18 @@ async def getkeyword(
         keyword: str,
         foodService: FoodService = Depends()
 ):
-    #try:
-    result = [
-        menu.menu_normalize()
-        for menu in foodService.getKeyword(
-            keyword=keyword
-        )
-    ]
-    if not result:
-        return ErrorResponse.not_found_error
+    try:
+        result = [
+            menu.menu_normalize()
+            for menu in foodService.getKeyword(
+                keyword=keyword
+            )
+        ]
+        if not result:
+            return ErrorResponse.not_found_error
 
-    return result
+        return result
 
-    #except:
-        #return ErrorResponse.internal_server_error
+    except Exception as e:
+        print(e)
+        return ErrorResponse.internal_server_error
