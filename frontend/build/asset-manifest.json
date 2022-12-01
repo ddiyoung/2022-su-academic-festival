@@ -1,15 +1,15 @@
 {
-  "main.css": "/2022-su-academic-festival/static/css/main.459c0d43.chunk.css",
-  "main.js": "/2022-su-academic-festival/static/js/main.c239977b.chunk.js",
-  "main.js.map": "/2022-su-academic-festival/static/js/main.c239977b.chunk.js.map",
-  "static/js/1.ae4700ea.chunk.js": "/2022-su-academic-festival/static/js/1.ae4700ea.chunk.js",
-  "static/js/1.ae4700ea.chunk.js.map": "/2022-su-academic-festival/static/js/1.ae4700ea.chunk.js.map",
-  "static/js/2.5b072c46.chunk.js": "/2022-su-academic-festival/static/js/2.5b072c46.chunk.js",
-  "static/js/2.5b072c46.chunk.js.map": "/2022-su-academic-festival/static/js/2.5b072c46.chunk.js.map",
-  "runtime~main.js": "/2022-su-academic-festival/static/js/runtime~main.d0c29268.js",
-  "runtime~main.js.map": "/2022-su-academic-festival/static/js/runtime~main.d0c29268.js.map",
-  "static/css/main.459c0d43.chunk.css.map": "/2022-su-academic-festival/static/css/main.459c0d43.chunk.css.map",
-  "index.html": "/2022-su-academic-festival/index.html",
-  "precache-manifest.805a3b59b9ca3615a6826a118885c498.js": "/2022-su-academic-festival/precache-manifest.805a3b59b9ca3615a6826a118885c498.js",
-  "service-worker.js": "/2022-su-academic-festival/service-worker.js"
+  "main.css": "./static/css/main.40652909.chunk.css",
+  "main.js": "./static/js/main.78d611a4.chunk.js",
+  "main.js.map": "./static/js/main.78d611a4.chunk.js.map",
+  "static/js/1.ae4700ea.chunk.js": "./static/js/1.ae4700ea.chunk.js",
+  "static/js/1.ae4700ea.chunk.js.map": "./static/js/1.ae4700ea.chunk.js.map",
+  "static/js/2.680f6d7f.chunk.js": "./static/js/2.680f6d7f.chunk.js",
+  "static/js/2.680f6d7f.chunk.js.map": "./static/js/2.680f6d7f.chunk.js.map",
+  "runtime~main.js": "./static/js/runtime~main.c191aa02.js",
+  "runtime~main.js.map": "./static/js/runtime~main.c191aa02.js.map",
+  "static/css/main.40652909.chunk.css.map": "./static/css/main.40652909.chunk.css.map",
+  "index.html": "./index.html",
+  "precache-manifest.bad2c62277c53eda1c6cbd5592ae0944.js": "./precache-manifest.bad2c62277c53eda1c6cbd5592ae0944.js",
+  "service-worker.js": "./service-worker.js"
 }
