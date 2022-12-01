@@ -47,7 +47,7 @@ export default function Input() {
               onChange={handleChange}
             />
             <br />
-            <br/>
+            <br />
             <br />
             <div className="center">
               <button className="select" type="submit">
@@ -81,14 +81,14 @@ export default function Input() {
           ) : (
             <>
               <div className="refind">FOODICE와 함께 다시 찾아볼까요?</div>
-              <button
-                className="footer goback"
-                onClick={() => window.location.replace("/input")}
-              >
-                다시찾기
-              </button>
             </>
           )}
+          <button
+            className="footer goback"
+            onClick={() => window.location.replace("/input")}
+          >
+            다시찾기
+          </button>
         </>
       )}
     </div>
