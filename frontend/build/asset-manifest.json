@@ -1,15 +1,15 @@
 {
-  "main.css": "./static/css/main.459c0d43.chunk.css",
-  "main.js": "./static/js/main.1733c2da.chunk.js",
-  "main.js.map": "./static/js/main.1733c2da.chunk.js.map",
-  "static/js/1.ae4700ea.chunk.js": "./static/js/1.ae4700ea.chunk.js",
-  "static/js/1.ae4700ea.chunk.js.map": "./static/js/1.ae4700ea.chunk.js.map",
-  "static/js/2.5632faf5.chunk.js": "./static/js/2.5632faf5.chunk.js",
-  "static/js/2.5632faf5.chunk.js.map": "./static/js/2.5632faf5.chunk.js.map",
-  "runtime~main.js": "./static/js/runtime~main.c191aa02.js",
-  "runtime~main.js.map": "./static/js/runtime~main.c191aa02.js.map",
-  "static/css/main.459c0d43.chunk.css.map": "./static/css/main.459c0d43.chunk.css.map",
-  "index.html": "./index.html",
-  "precache-manifest.0baf40a3636e786cfa5ffdc5a942cf60.js": "./precache-manifest.0baf40a3636e786cfa5ffdc5a942cf60.js",
-  "service-worker.js": "./service-worker.js"
+  "main.css": "/2022-su-academic-festival/static/css/main.01eedc3e.chunk.css",
+  "main.js": "/2022-su-academic-festival/static/js/main.3857940a.chunk.js",
+  "main.js.map": "/2022-su-academic-festival/static/js/main.3857940a.chunk.js.map",
+  "static/js/1.ae4700ea.chunk.js": "/2022-su-academic-festival/static/js/1.ae4700ea.chunk.js",
+  "static/js/1.ae4700ea.chunk.js.map": "/2022-su-academic-festival/static/js/1.ae4700ea.chunk.js.map",
+  "static/js/2.5b072c46.chunk.js": "/2022-su-academic-festival/static/js/2.5b072c46.chunk.js",
+  "static/js/2.5b072c46.chunk.js.map": "/2022-su-academic-festival/static/js/2.5b072c46.chunk.js.map",
+  "runtime~main.js": "/2022-su-academic-festival/static/js/runtime~main.d0c29268.js",
+  "runtime~main.js.map": "/2022-su-academic-festival/static/js/runtime~main.d0c29268.js.map",
+  "static/css/main.01eedc3e.chunk.css.map": "/2022-su-academic-festival/static/css/main.01eedc3e.chunk.css.map",
+  "index.html": "/2022-su-academic-festival/index.html",
+  "precache-manifest.42911797591702b5c51d74267a3131a3.js": "/2022-su-academic-festival/precache-manifest.42911797591702b5c51d74267a3131a3.js",
+  "service-worker.js": "/2022-su-academic-festival/service-worker.js"
 }
