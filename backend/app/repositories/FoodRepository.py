@@ -95,7 +95,8 @@ class FoodRepository:
 
         result = set(result)
 
-        result.remove(None)
+        if None in result:
+            result.remove(None)
 
         result = list(result)
 
