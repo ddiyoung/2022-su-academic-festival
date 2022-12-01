@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/2022-su-academic-festival/precache-manifest.98a7ef06c1ed44065cec080bb7fa30eb.js"
+  "/2022-su-academic-festival/precache-manifest.429662accc9e11ac0902268b5511cb9e.js"
 );
 
 workbox.clientsClaim();
