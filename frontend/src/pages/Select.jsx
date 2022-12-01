@@ -47,8 +47,8 @@ export default function Select() {
   };
 
   // 처음으로 되돌아가기
-  const goBackClick = async () => {
-    window.location.replace("/index");
+  const goBackClick = () => {
+    window.location.replace("../index");
   };
 
   const handleClick = async (id, answer, idx) => {
@@ -131,7 +131,7 @@ export default function Select() {
           <br />
           <button
             className="footer goback"
-            onClick={() => window.location.replace("/index")}
+            onClick={() => window.location.replace("../index")}
           >
             다시찾기
           </button>
@@ -162,7 +162,7 @@ export default function Select() {
               ))}
           </section>
           <br />
-          <button className="goback footer" onClick={() => goBackClick}>
+          <button className="goback footer" onClick={() => goBackClick()}>
             처음으로
           </button>
         </>
