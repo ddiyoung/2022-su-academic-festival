@@ -13,7 +13,7 @@ export default function Home() {
   };
 
   return (
-    <body>
+    <div className="center-location">
       <div className="app">
         <img className="logo-full" alt="logo" src="images/logoFull.png" />
         <br />
@@ -26,6 +26,6 @@ export default function Home() {
           시작하기
         </button>
       </div>
-    </body>
+    </div>
   );
 }
