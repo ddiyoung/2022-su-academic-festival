@@ -129,7 +129,6 @@ p {
 .result {
   position: relative;
   min-width: 250px;
-  max-width: 350px;
   font-size: 25px;
   color: white;
   background-color: #fdfaf9;
@@ -153,7 +152,6 @@ p {
 .select{
   position: relative;
   min-width: 200px;
-  max-width: 250px;
   font-size: 18px;
   font-weight: bold;
   color: black;
