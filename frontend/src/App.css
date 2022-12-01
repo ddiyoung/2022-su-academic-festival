@@ -10,7 +10,7 @@
   src: url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css') format('Regular');
 }
 
-body{
+.center-location{
   margin-left: auto;
   margin-right: auto;
   margin: 200px 0px;

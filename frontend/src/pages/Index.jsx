@@ -13,7 +13,7 @@ export default function Index() {
   };
 
   return (
-    <body>
+    <div className="center-location">
       <div className="app">
         <img className="logo-full" alt="logo" src="images/logoFull.png" />
         <br />
@@ -33,6 +33,6 @@ export default function Index() {
           </a>
         </section>
       </div>
-    </body>
+    </div>
   );
 }
