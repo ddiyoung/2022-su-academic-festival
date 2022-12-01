@@ -46,23 +46,9 @@ export default function Select() {
     }
   };
 
-  // 이전으로 되돌아가기
-  const goBackClick = async (currentQuestion) => {
-    setGoback(true);
-    setCountIndex(-1);
-    await delay(1000);
-
-    setResponseList(prevResponseList);
-
-    if (currentQuestion == 0) window.location.replace("/index");
-
-    // question 번호 갱신
-    const nextQuestion = currentQuestion - 1;
-    if (nextQuestion < questions.length) {
-      setCurrentQuestion(nextQuestion);
-    } else {
-      setShowResult(true);
-    }
+  // 처음으로 되돌아가기
+  const goBackClick = async () => {
+    window.location.replace("/index");
   };
 
   const handleClick = async (id, answer, idx) => {
@@ -176,11 +162,8 @@ export default function Select() {
               ))}
           </section>
           <br />
-          <button
-            className="goback footer"
-            onClick={() => goBackClick(currentQuestion)}
-          >
-            뒤로가기
+          <button className="goback footer" onClick={() => goBackClick}>
+            처음으로
           </button>
         </>
       )}
